@@ -1,4 +1,4 @@
 bin
 lib
 goorm.manifest
-src/Main
+src/Main/
