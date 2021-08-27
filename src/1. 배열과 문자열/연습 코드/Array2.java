@@ -3,16 +3,15 @@ public class Array2{
         if(array1.length() != array2.length()){
             return false;
         }
-        char[] chrArray = new char[array1.length()];
-        for(int i = 0; i < array1.length(); i++){
-            char a1 = array1.charAt(i);
-            for(int e = 0; e < array2.length(); i++){
-                char a2 = array2.charAt(e);
-                if(a1 == a2){
-                    chrArray[i] = a1;
-                } 
-            }
-            if(chrArray[i] == a1) return false;
+        int[] temp1 = new int[128];
+        int[] temp2 = new int[128];
+
+        for(int i = 0; i<array1.length(); i++){
+            temp1[(int)array1.charAt(i)]++;
+            temp2[(int)array2.charAt(i)]++;
+        }
+        for(int i = 0; i<128; i++){
+            if(temp1[i] != temp2[i]) return false;
         }
         return true;
     }
