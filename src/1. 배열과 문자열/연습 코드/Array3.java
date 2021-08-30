@@ -12,12 +12,10 @@ public class Array3{
         
        for(int i = 0; i < str.length(); i++){
            if(str.charAt(i) == ' '){
-               chr[index] = '%';
-               index++;
-               chr[index] = '2';
-               index++;
-               chr[index] = '0';
-               index++;
+               chr[index+1] = '%';
+               chr[index+2] = '2';
+               chr[index+3] = '0';
+               index += 4;
            }
            else{
                chr[index] = str.charAt(i);
