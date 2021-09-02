@@ -1,17 +1,28 @@
 public class Array5 {
-    public boolean oneEditAway(String first, String second) {
+    boolean oneEditAway(String first, String second) {
         if (first.length() == second.length()) {
-            oneEditReplace();
+            return oneEditReplace(first, second);
         } else if (first.length() - second.length() == 1) {
-            return oneEditInsert(first, second);
-        } else if (first.length() - second.length() == -1) {
             return oneEditInsert(second, first);
+        } else if (first.length() - second.length() == -1) {
+            return oneEditInsert(first, second);
         } else {
             return false;
         }
     }
-    public boolean oneEditReplace(String s1, String s2) {}
-    public boolean oneEditInsert(String s1, String s2) {
+    boolean oneEditReplace(String s1, String s2) {
+        int count = 0;
+        for (int i = 0; i < s1.length(); i ++) {
+            if (s1.charAt(i) != s2.charAt(i)) {
+                count ++;
+                if (count == 2) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    boolean oneEditInsert(String s1, String s2) {
         int index1 = 0,
         index2 = 0;
         while (index1 < s1.length() && index2 < s2.length()) {
