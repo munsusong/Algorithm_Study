@@ -1,0 +1,18 @@
+import java.io.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		long num = Integer.parseInt(br.readLine());
+		long sum = 0L;
+		final int mod = 1000000007;
+		
+		for(long i = 1; i <= num; i++){
+			long temp = (i*i)%mod;
+			long temp2 = (temp*i)%mod;
+			
+			sum += temp2;
+			sum %= mod;
+		}
+		System.out.println(sum);
+	}
+}
