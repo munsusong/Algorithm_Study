@@ -1,3 +1,4 @@
+/* 반복문으로 인해 타임아웃이 남
 import java.io.*;
 class Main {
 	public static void main(String[] args) throws Exception {
@@ -13,6 +14,24 @@ class Main {
 			sum += temp2;
 			sum %= mod;
 		}
+		System.out.println(sum);
+	}
+}
+*/
+
+// 가우스의 덧셈 공식 이용
+// 1부터 n까지일 경우 (1부터 n까지 더한 값)^2가 1부터 n까지 ^3을 하여 더한 것의 값과 같음 
+// mod(1e9+7)에 관해서는 https://www.facebook.com/algoguide/posts/1117664551755294/ 참고
+import java.io.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		long num = Integer.parseInt(br.readLine());
+		long sum = 0L;
+		final int mod = 1000000007;
+		
+		sum = (1+num)*num/2%mod;
+		sum = sum*sum%mod;
 		System.out.println(sum);
 	}
 }
