@@ -1,0 +1,23 @@
+import java.io.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[][] length = new String[3][2];
+		double[][] num = new double[3][2];
+		double sum = 0;
+		
+		for(int i = 0; i<3; i++){
+				length[i]	= br.readLine().split(" ");
+			for(int e = 0; e<2; e++){
+				num[i][e] = Double.parseDouble(length[i][e]);
+			}
+		}
+		
+		sum = Math.abs(((num[0][0]*num[1][1]+num[1][0]*num[2][1]+num[2][0]*num[0][1])-(num[0][1]*num[1][0]+num[1][1]*num[2][0]+num[2][1]*num[0][0]))/2);
+		
+		System.out.println(String.format("%.2f",sum));
+	}
+}
+// a.b c.d e.f
+// {(ad+cf+eb)-(bc+de+fa)}/2 
+// 가우스의 면적공식
