@@ -1,0 +1,13 @@
+import java.io.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		long input = Integer.parseInt(br.readLine());
+		long sum = 0L;
+		
+		for(long i = 1; i <= input; i++){
+			sum += i*i;
+		}
+		System.out.println(sum);
+	}
+}
