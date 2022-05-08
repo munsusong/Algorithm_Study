@@ -1,0 +1,67 @@
+import java.io.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int num = Integer.parseInt(br.readLine());
+		Main tmp = new Main();
+		
+		for(int i = 0; i < num; i++){
+			String word = br.readLine();
+			if(tmp.isMirror(word)){
+				System.out.println("Mirror");
+			}
+			else System.out.println("Normal");
+		}
+	}
+	
+	public boolean isMirror(String word){
+		char[] table = {'b','d','i','l','m','n','o','p','q','s','z','u','v','w','x'}; 
+		boolean flag = false;
+		for(int i = 0; i < word.length(); i++){
+			for(int e = 0; e < table.length; e++){
+					if(word.charAt(i) == table[e]){
+						flag = true;
+					}
+			}
+			if(flag == false){
+				return false;
+			}
+			else if(word.charAt(i) == 'b'){
+				if(word.charAt(word.length()-1-i) != 'd'){
+					return false;
+				}
+			}
+			else if(word.charAt(i) == 'd'){
+				if(word.charAt(word.length()-1-i) != 'b'){
+					return false;
+				}
+			}
+			else if(word.charAt(i) == 'p'){
+				if(word.charAt(word.length()-1-i) != 'q'){
+					return false;
+				}
+			}
+			else if(word.charAt(i) == 'q'){
+				if(word.charAt(word.length()-1-i) != 'p'){
+					return false;
+				}
+			}
+			else if(word.charAt(i) == 's'){
+				if(word.charAt(word.length()-1-i) != 'z'){
+					return false;
+				}
+			}
+			else if(word.charAt(i) == 'z'){
+				if(word.charAt(word.length()-1-i) != 's'){
+					return false;
+				}
+			}
+			else{
+				if(word.charAt(i) != word.charAt(word.length()-1-i)){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+}
