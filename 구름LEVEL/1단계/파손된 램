@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.ArrayList;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int input = Integer.parseInt(br.readLine());
+		String[] mem = br.readLine().split(" ");
+		int count = 0;
+		ArrayList<Integer> list = new ArrayList();
+		
+		for(int i = 0; i < input; i++){
+			int tmp = Integer.parseInt(mem[i]);
+			int tmp1 = tmp&(tmp-1);
+			if( tmp1 != 0){
+				count++;
+				list.add(i+1);
+			}
+		}
+		System.out.println(count);
+		if(list.size() != 0){
+			for(int i = 0; i<list.size(); i++){
+				System.out.print(list.get(i));
+				System.out.print(" ");
+			}
+		}
+	}
+}
