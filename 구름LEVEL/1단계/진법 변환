@@ -1,0 +1,22 @@
+import java.io.*;
+class Main {
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[] input = br.readLine().split(" ");
+		int num = Integer.parseInt(input[0]);
+		
+		for(int i = 2; i<=16; i++){
+			String sum = "";
+			int tmp = num;
+			while(tmp != 0){
+				sum = Integer.toString(tmp%i) + sum;
+			  tmp /= i;
+			}
+			if(sum.equals(input[1])){
+				System.out.println(i);
+				break;
+			}
+		}
+	}
+}
+//11진수이상의 진법 변환에 관해 처리해야함
