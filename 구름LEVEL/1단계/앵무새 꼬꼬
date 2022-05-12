@@ -1,0 +1,30 @@
+import java.io. *;
+class Main {
+    public static void main(String[] args)throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System. in));
+        int num = Integer.parseInt(br.readLine());
+        String[] input = new String[num];
+        for (int i = 0; i < num; i ++) {
+            char[] tmp = br.readLine().toCharArray();
+            input[i] = "";
+            for (char e : tmp) {
+                if (e == 'a' || e == 'A') {
+                    input[i] += Character.toString(e);
+                } else if (e == 'e' || e == 'E') {
+                    input[i] += Character.toString(e);
+                } else if (e == 'i' || e == 'I') {
+                    input[i] += Character.toString(e);
+                } else if (e == 'o' || e == 'O') {
+                    input[i] += Character.toString(e);
+                } else if (e == 'u' || e == 'U') {
+                    input[i] += Character.toString(e);
+                }
+            }
+            if (input[i].isEmpty()) {
+                System.out.println("???");
+            } else 
+                System.out.println(input[i]);
+            
+        }
+    }
+}
