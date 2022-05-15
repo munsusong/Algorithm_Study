@@ -1,0 +1,25 @@
+import java.io. *;
+class Main {
+    public static void main(String[] args)throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System. in));
+        int num = Integer.parseInt(br.readLine());
+        int[] arr = new int[num];
+        int cnt = 1;
+        int maxnum = 0;
+        for (int i = 0; i < num; i ++) {
+            arr[i] = Integer.parseInt(br.readLine());
+        }
+        int last = arr[num - 1];
+        for (int i = num - 2; i >= 0; i --) {
+            if (arr[i] > last) {
+                if (maxnum < arr[i]) 
+                    cnt ++;
+                
+            }
+            if (maxnum < arr[i]) {
+                maxnum = arr[i];
+            }
+        }
+        System.out.println(cnt);
+    }
+}
