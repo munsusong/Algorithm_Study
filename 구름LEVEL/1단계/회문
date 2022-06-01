@@ -4,38 +4,46 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System. in));
         int num = Integer.parseInt(br.readLine());
         StringBuilder sentence = new StringBuilder();
-        int pal = 0;
-        boolean status = false;
+        Main meth = new Main();
         for (int i = 0; i < num; i ++) {
+            int answer = 0;
             String spare = br.readLine();
             int len = spare.length();
-            for (int e = 0; e < len; e ++) {
-                sentence.setLength(0);
-                sentence.append(spare);
-                char temp[] = sentence
-                    .deleteCharAt(e)
-                    .toString()
-                    .toCharArray();
-                for (int j = 0; j < temp.length / 2; j ++) {
-                    if (temp[j] == temp[temp.length - j - 1]) {
-                        status = true;
-                    } else {
-                        status = false;
+            sentence.setLength(0);
+            sentence.append(spare);
+            char temp[] = sentence.toString().toCharArray();
+            if (meth.cal(temp) == false) {
+                for (int e = 0; e < len; e ++) {
+                    sentence.setLength(0);
+                    sentence.append(spare);
+                    temp = sentence
+                        .deleteCharAt(e)
+                        .toString()
+                        .toCharArray();
+                    if (meth.cal(temp) == true) {
+                        answer = 1;
                         break;
-                    }
+                    } else 
+                        answer = 2;
                 }
-                if (status == true) {
-                    if (e == 0) {
-                        System.out.println("0");
-                    } else {
-                        System.out.println("1");
-                    }
-                }
+            } else {
+                answer = 0;
             }
-            if (status == false) {
-                System.out.println("2");
-            }
+            System.out.println(answer);
         }
     }
+    public boolean cal(char[] sen) {
+        boolean status = false;
+        for (int i = 0; i < sen.length / 2; i ++) {
+            if (sen[i] == sen[sen.length - i - 1]) {
+                status = true;
+            } else {
+                status = false;
+                break;
+            }
+        }
+        return status;
+    }
 }
-//함수로 회문이 맞는지 판단하는 기능을 만들어야함
+//테스트 케이스는 통과했으나 시간 초과가 남
+//반복문을 줄여보거나 편하게 문자 지우기 위해 StringBuilder를 사용한 것이 문제일듯
