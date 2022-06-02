@@ -3,23 +3,18 @@ class Main {
     public static void main(String[] args)throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System. in));
         int num = Integer.parseInt(br.readLine());
-        StringBuilder sentence = new StringBuilder();
         Main meth = new Main();
-        for (int i = 0; i < num; i ++) {
+			
+        while (num != 0) {
             int answer = 0;
-            String spare = br.readLine();
-            int len = spare.length();
-            sentence.setLength(0);
-            sentence.append(spare);
-            char temp[] = sentence.toString().toCharArray();
+            String sentence = br.readLine();
+            char temp[] = sentence.toCharArray();
+					
             if (meth.cal(temp) == false) {
-                for (int e = 0; e < len; e ++) {
-                    sentence.setLength(0);
-                    sentence.append(spare);
-                    temp = sentence
-                        .deleteCharAt(e)
-                        .toString()
-                        .toCharArray();
+                for (int e = 0; e < sentence.length(); e ++) {
+                    String spare = sentence;
+                    spare = spare.substring(0, e) + spare.substring(e + 1);
+                    temp = spare.toCharArray();
                     if (meth.cal(temp) == true) {
                         answer = 1;
                         break;
@@ -30,20 +25,15 @@ class Main {
                 answer = 0;
             }
             System.out.println(answer);
+            num --;
         }
     }
     public boolean cal(char[] sen) {
-        boolean status = false;
         for (int i = 0; i < sen.length / 2; i ++) {
-            if (sen[i] == sen[sen.length - i - 1]) {
-                status = true;
-            } else {
-                status = false;
-                break;
+            if (sen[i] != sen[sen.length - i - 1]) {
+                return false;
             }
         }
-        return status;
+        return true;
     }
 }
-//테스트 케이스는 통과했으나 시간 초과가 남
-//반복문을 줄여보거나 편하게 문자 지우기 위해 StringBuilder를 사용한 것이 문제일듯
